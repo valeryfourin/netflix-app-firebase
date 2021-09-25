@@ -1,13 +1,27 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Container, Nav, Navbar, Image } from 'react-bootstrap'
 import "../styles/NavBar.css"
 
 export default function NavBar() {
+  const [show, handleShow] = useState(false);
+  const transitionNavBar = () => {
+    if (window.scrollY > 100) {
+      handleShow(true);
+    } else {
+      handleShow(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', transitionNavBar);
+    return () => window.removeEventListener('scroll', transitionNavBar);
+  });
+
     return (
      
-    <Navbar expand="lg" className="navbar">
+    <Navbar expand="lg" sticky="top" id="navbar" className={`nav-menu ${show && 'nav-menu-show'}`}>
       <Container>
-      <Image className="logo" src="https://analyticsindiamag.com/wp-content/uploads/2020/03/493f5bba-81a4-11e9-bf79-066b49664af6_cm_1440w.png"/>
+      <Image className="logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/1280px-Netflix_2015_logo.svg.png"/>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">

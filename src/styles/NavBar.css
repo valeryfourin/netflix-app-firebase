@@ -1,21 +1,40 @@
 .logo {
-    width: 200px;
+    width: 150px;
+    margin-right: 40px;
 }
 
 .user-icon {
     width: 30px;
 }
 
-.navbar {
+.fixed {
+    position: fixed !important;
+}
+
+.nav-menu {
+    width: 100%;
     background-color: black;
-    
-}
-
-.nav-link {
-    color: beige !important;
+    /* background: linear-gradient(0deg, rgba(0,0,0,0.7567401960784313) 0%, rgba(0,0,0,1) 100%); */
+    height: 100px;
     transition: all 1s ease-in-out;
+    z-index: 1;
 }
 
-.nav-link:hover {
+.nav-menu-show {
+    background: none;
+}
+
+
+
+a {
+    color: beige !important;
+    transition: all 5s ease-in-out;
+}
+
+a:hover {
     color: lightgrey !important;
+}
+
+.nav-menu-show a {
+    color: black !important;    
 }
