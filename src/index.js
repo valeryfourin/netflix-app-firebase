@@ -1,25 +1,22 @@
-// Написать стриминговый сервис (по типу Нетфликса), 
-// - с личным кабинетом (реализован логин), 
+// Написать стриминговый сервис (по типу Нетфликса),
+// - с личным кабинетом (реализован логин),
 // - с возможностью добавлять в избранное.
-// - Фильтровать по разным критериям, 
-// - ставить лайки. 
-// - возможность добавлять кого-то в друзья и шарить с ним свои предпочтения. 
+// - Фильтровать по разным критериям,
+// - ставить лайки.
+// - возможность добавлять кого-то в друзья и шарить с ним свои предпочтения.
 // Дедлайн 01 октября
 // Используйте это API https://www.tvmaze.com/api
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+
 import App from './App';
-import reportWebVitals from './reportWebVitals';
+import reportWebVitals from './ReportWebVitals';
+
+import './index.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+ReactDOM.render(React.createElement(App), document.querySelector('#root'));
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
