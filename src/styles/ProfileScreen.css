@@ -1,0 +1,87 @@
+.profile-screen {
+  color: white;
+  height: 100vh;
+}
+
+.profile-screen__body {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  max-width: 800px;
+  padding-top: 8%;
+  width: 50%;
+}
+
+.profile-screen__info {
+  display: flex;
+}
+
+.profile-screen__info img {
+  height: 170px;
+  width: 170px;
+}
+
+.profile-screen__body > h1 {
+  border-bottom: 1px solid #282c2d;
+  font-size: 60px;
+  font-weight: 400;
+  margin-bottom: 20px;
+}
+
+.profile-screen__details {
+  color: white;
+  flex: 1;
+  margin-left: 25px;
+}
+
+.profile-screen__details > h2 {
+  background-color: gray;
+  font-size: 15px;
+  padding: 15px;
+  padding-left: 20px;
+}
+
+.profile-screen__plan {
+  display: flex;
+  justify-content: space-between;
+}
+
+.profile-screen__plan p {
+  margin: 0;
+}
+
+.profile-screen__plan * {
+  margin: 5% 0;
+}
+
+.profile-screen__plans {
+  margin-top: 20px;
+}
+
+.profile-screen__plans > h3 {
+  border-bottom: 1px solid #282c2d;
+  padding-bottom: 10px;
+}
+
+.profile-screen__button {
+  background-color: #e50914;
+  border: none;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 10px 20px;
+  width: 100%;
+}
+
+.profile-screen__button:disabled {
+  background-color: gray;
+}
+
+.profile-screen__button:active {
+  background-color: #610005;
+}
+
+.profile-screen__plans .profile-screen__button {
+  height: 50px;
+  width: 200px;
+}

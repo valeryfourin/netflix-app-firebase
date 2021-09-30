@@ -3,6 +3,10 @@
   margin-left: 20px !important;
 }
 
+.row h2 {
+  z-index: 100;
+}
+
 .row__posters {
   display: flex;
   overflow-x: scroll;
@@ -11,16 +15,17 @@
 }
 
 .row__poster {
-  margin-right: 10px;
-  max-height: 150px;
+  background-position: center;
+  background-size: cover;
+  height: 150px;
+  margin: 0 5px;
   object-fit: contain;
   transition: transform 450ms;
-  width: 100%;
+  width: 100px;
 }
 
 .row__poster::-webkit-scrollbar {
-  background-color: black;
-  display: none !important;
+  display: none;
 }
 
 .row__poster:hover {

@@ -1,0 +1,36 @@
+.modal__button {
+  background-color: black;
+  border: none;
+  border-radius: 5px;
+}
+
+.modal-content {
+  /* backdrop-filter: blur(5px); */
+  background-color: #111 !important;
+  color: white;
+  transition: all 0.5s ease-in-out;
+}
+
+.modal__image {
+  background-position: center;
+  background-size: cover;
+  height: 500px;
+  margin: auto;
+  width: 100%;
+}
+
+.modal-header,
+.modal-footer {
+  border: none !important;
+}
+
+.modal-img--fadeBottom {
+  background-image: linear-gradient(180deg, transparent, transparent, transparent, transparent, transparent, transparent, rgba(37, 37, 37, 0.61), #111);
+  height: 100%;
+  width: 100%;
+  z-index: 0;
+}
+
+.tags-title {
+  color: rgb(88, 88, 88);
+}

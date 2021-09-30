@@ -1,18 +1,59 @@
-// eslint-disable-next-line eslint-comments/disable-enable-pair
+/* eslint-disable eslint-comments/disable-enable-pair */
 /* eslint-disable react/jsx-filename-extension */
-import React from 'react';
+/* eslint-disable no-console */
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-import HomeScreen from './components/HomeScreen';
+import { login, logout, selectUser } from './app/UserSlice';
+import HomeScreen from './screens/HomeScreen';
+import LoginScreen from './screens/LoginScreen';
+import ProfileScreen from './screens/ProfileScreen';
+import { authUser } from './firebase';
 
 import './App.css';
 
 function App() {
+  const user = useSelector(selectUser);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const unsubscribe = authUser.onAuthStateChanged((userInfo) => {
+      if (userInfo) {
+        // logged in
+        console.log(userInfo);
+        dispatch(
+          login({
+            uid: userInfo.uid,
+            email: userInfo.email,
+          }),
+        );
+      } else {
+        // logged out
+        dispatch(logout());
+      }
+    });
+
+    return unsubscribe;
+  }, [dispatch]);
+
   return (
-    <React.StrictMode>
-      <div className="App">
-        <HomeScreen />
-      </div>
-    </React.StrictMode>
+    <div className="App">
+      <Router>
+        {!user ? (
+          <LoginScreen />
+        ) : (
+          <Switch>
+            <Route exact path="/profile">
+              <ProfileScreen />
+            </Route>
+            <Route exact path="/">
+              <HomeScreen />
+            </Route>
+          </Switch>
+        )}
+      </Router>
+    </div>
   );
 }
 

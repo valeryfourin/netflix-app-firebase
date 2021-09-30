@@ -1,9 +1,11 @@
 .logo {
+  cursor: pointer;
   margin-right: 40px;
   width: 150px;
 }
 
 .user-icon {
+  cursor: pointer;
   width: 30px;
 }
 
@@ -36,4 +38,14 @@ a:hover {
 
 .nav-menu-show a {
   color: white !important;
+}
+
+@media screen and (max-width: 1000px) {
+  .navbar-nav {
+    flex-direction: row !important;
+  }
+
+  .nav-link {
+    margin-right: 10px !important;
+  }
 }

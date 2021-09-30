@@ -1,3 +1,7 @@
+/* eslint-disable eslint-comments/disable-enable-pair */
+/* eslint-disable unicorn/prefer-query-selector */
+/* eslint-disable react/jsx-filename-extension */
+/* eslint-disable prettier/prettier */
 // Написать стриминговый сервис (по типу Нетфликса),
 // - с личным кабинетом (реализован логин),
 // - с возможностью добавлять в избранное.
@@ -9,16 +13,21 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
 
+import { store } from './app/store';
 import App from './App';
 import reportWebVitals from './ReportWebVitals';
 
 import './index.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
-ReactDOM.render(React.createElement(App), document.querySelector('#root'));
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+ReactDOM.render(
+    <React.StrictMode>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </React.StrictMode>,
+    document.getElementById('root')
+  );
 reportWebVitals();

@@ -3,7 +3,7 @@
   background-position: center;
   background-size: cover;
   color: white;
-  height: 600px;
+  height: 100vh;
   object-fit: contain;
   position: relative;
   width: 100%;
@@ -31,8 +31,9 @@
 }
 
 .banner--fadeBottom {
-  background-image: linear-gradient(180deg, transparent, rgba(37, 37, 37, 0.61), #111, transparent);
-  height: 9rem;
+  background-image: linear-gradient(180deg, transparent, rgba(37, 37, 37, 0.61), #111, black);
+  height: 8rem;
+  z-index: 0;
 }
 
 .banner__preview {

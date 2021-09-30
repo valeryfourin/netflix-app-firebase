@@ -56,7 +56,7 @@ export default function Banner() {
     fetchData();
   }, [movie]);
 
-  // console.log(movieBanner);
+  console.log(movie);
   // console.log(
   //   movieBanner.length > 0 ? movieBanner[0].resolutions.original.url : 0,
   // );
