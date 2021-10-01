@@ -3,7 +3,7 @@ import React from 'react';
 import Banner from '../components/Banner';
 import Footer from '../components/Footer';
 import NavBar from '../components/NavBar';
-import Row from '../components/Row';
+import ShowsList from '../components/ShowsList';
 
 import '../styles/HomeScreen.css';
 
@@ -13,11 +13,11 @@ export default function Homescreen() {
       <NavBar />
       <Banner />
 
-      <Row title="RECENT" genre="all" />
-      <Row title="COMEDIES" genre="Comedy" />
-      <Row title="ROMANCE" genre="Romance" />
-      <Row title="THRILLER" genre="Thriller" />
-      <Row title="HORROR" genre="Horror" />
+      <ShowsList title="RECENT" genre="all" />
+      <ShowsList title="COMEDIES" genre="Comedy" />
+      <ShowsList title="ROMANCE" genre="Romance" />
+      <ShowsList title="THRILLER" genre="Thriller" />
+      <ShowsList title="HORROR" genre="Horror" />
 
       <Footer />
     </div>

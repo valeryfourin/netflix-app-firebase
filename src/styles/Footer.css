@@ -21,6 +21,10 @@
   cursor: pointer;
 }
 
+.footer-content__col p:hover {
+  color: rgb(92, 92, 92);
+}
+
 .social-media__icon {
   cursor: pointer;
   margin: 0 5px 10px 5px;

@@ -50,7 +50,7 @@ export default function ItemModal({
         {/* </Modal.Header> */}
         <Modal.Body>
           <Modal.Title>{name}</Modal.Title>
-          <a href={url}>
+          <a href={url} target="_blank" rel="noreferrer">
             <button type="button" className="banner__button">
               Play
             </button>

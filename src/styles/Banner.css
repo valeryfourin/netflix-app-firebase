@@ -3,7 +3,10 @@
   background-position: center;
   background-size: cover;
   color: white;
+  display: flex;
+  flex-direction: column;
   height: 100vh;
+  justify-content: space-between;
   object-fit: contain;
   position: relative;
   width: 100%;
@@ -33,6 +36,8 @@
 .banner--fadeBottom {
   background-image: linear-gradient(180deg, transparent, rgba(37, 37, 37, 0.61), #111, black);
   height: 8rem;
+  transform: translateY(1px);
+  width: 100%;
   z-index: 0;
 }
 

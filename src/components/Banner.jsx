@@ -76,7 +76,7 @@ export default function Banner() {
           <div className="banner__text-wrap">
             <h1 className="banner__title">{movie && movie.name}</h1>
             <div className="banner__buttons">
-              <a href={movie.url}>
+              <a href={movie.url} target="_blank" rel="noreferrer">
                 <button type="button" className="banner__button">
                   Play
                 </button>

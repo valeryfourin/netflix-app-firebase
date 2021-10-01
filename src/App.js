@@ -8,7 +8,9 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { login, logout, selectUser } from './app/UserSlice';
 import HomeScreen from './screens/HomeScreen';
 import LoginScreen from './screens/LoginScreen';
+import MylistScreen from './screens/MylistScreen';
 import ProfileScreen from './screens/ProfileScreen';
+import SearchScreen from './screens/SearchScreen';
 import { authUser } from './firebase';
 
 import './App.css';
@@ -46,6 +48,12 @@ function App() {
           <Switch>
             <Route exact path="/profile">
               <ProfileScreen />
+            </Route>
+            <Route exact path="/search">
+              <SearchScreen />
+            </Route>
+            <Route exact path="/my-list">
+              <MylistScreen />
             </Route>
             <Route exact path="/">
               <HomeScreen />

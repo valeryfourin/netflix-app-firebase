@@ -2,6 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { Container, Image, Nav, Navbar } from 'react-bootstrap';
 import { useHistory } from 'react-router';
 
+import {
+  HOME_ROUTE,
+  MYLIST_ROUTE,
+  PROFILE_ROUTE,
+  SEARCH_ROUTE,
+} from '../utils/consts';
+
 import '../styles/NavBar.css';
 
 const fadeHeight = 100;
@@ -32,7 +39,7 @@ export default function NavBar() {
     >
       <Container>
         <Image
-          onClick={() => history.push('/')}
+          onClick={() => history.push(HOME_ROUTE)}
           className="logo"
           src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/1280px-Netflix_2015_logo.svg.png"
           alt="Netflix"
@@ -40,13 +47,13 @@ export default function NavBar() {
         {/* <Navbar.Toggle aria-controls="basic-navbar-nav" /> */}
         {/* <Navbar.Collapse id="basic-navbar-nav"> */}
         <Nav className="me-auto">
-          <Nav.Link href="#home">Home</Nav.Link>
-          <Nav.Link href="#link">Search</Nav.Link>
-          <Nav.Link href="#link">My List</Nav.Link>
+          <Nav.Link href={HOME_ROUTE}>Home</Nav.Link>
+          <Nav.Link href={SEARCH_ROUTE}>Search</Nav.Link>
+          <Nav.Link href={MYLIST_ROUTE}>My List</Nav.Link>
         </Nav>
         {/* </Navbar.Collapse> */}
         <Image
-          onClick={() => history.push('/profile')}
+          onClick={() => history.push(PROFILE_ROUTE)}
           className="user-icon"
           src="https://pbs.twimg.com/media/DmtcXxYUcAYshhQ.jpg"
           alt="user icon"

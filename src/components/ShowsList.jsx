@@ -1,4 +1,5 @@
 /* eslint-disable eslint-comments/disable-enable-pair */ /* eslint-disable prettier/prettier */
+/* eslint-disable no-console */
 
 import axios from 'axios';
 import PropTypes from 'prop-types';
@@ -6,10 +7,11 @@ import React, { useEffect, useState } from 'react';
 
 import requests from '../http/Requests';
 
-// eslint-disable-next-line import/no-named-as-default
 import ItemModal from './ItemModal';
 
-import '../styles/Row.css';
+import '../styles/ShowsList.css';
+
+const showsCount = 30;
 
 const defaultValues = {
     id: 1,
@@ -24,7 +26,7 @@ const defaultValues = {
     summary: 'Movie description'
 }
 
-export default function Row({ title, genre }) {
+export default function ShowList({ title, genre }) {
     // eslint-disable-next-line no-unused-vars
     const [movies, setMovies] = useState([]);
     useEffect(() => {
@@ -32,12 +34,14 @@ export default function Row({ title, genre }) {
             const request = await axios.get(requests.fetchShows);
             if (genre !== 'all') {
                 setMovies(
-                    request.data.filter((object) => {
+                    request.data
+                      .filter((object) => {
                         return object?.genres.includes(genre);
-                      }),
+                      })
+                      .slice(0, showsCount),
                 );
             } else {
-                setMovies(request.data);
+                setMovies(request.data.slice(0, showsCount));
             }
             return request;
         }
@@ -47,13 +51,13 @@ export default function Row({ title, genre }) {
 
 
     return (
-        <div className="row">
+        <div className="shows-list">
             <h2>{title}</h2>
 
-            <div className="row__posters">
+            <div className="shows-list__posters">
                 {movies.map(movie => (
                     <ItemModal 
-                        className='row__poster'
+                        className='shows-list__poster'
                         src={movie.image !== undefined ? movie.image?.original : defaultValues.img}
                         key={movie.id !== undefined ? movie?.id : defaultValues.id}
                         id={movie.id !== undefined ? movie?.id : defaultValues.id}
@@ -72,7 +76,7 @@ export default function Row({ title, genre }) {
     )
 }
 
-Row.propTypes = {
+ShowList.propTypes = {
     title: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
 }
