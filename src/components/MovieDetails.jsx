@@ -8,8 +8,7 @@ import '../styles/ItemModal.css';
 
 // const fadeHeight = 100;
 
-export default function ItemModal({
-  className,
+export default function MovieDetails({
   src,
   id,
   name,
@@ -28,26 +27,17 @@ export default function ItemModal({
 
   return (
     <>
-      <button type="button" className="modal__button" onClick={handleShow}>
-        <img
-          className={className}
-          key={id}
-          src={src}
-          alt={name}
-          loading="lazy"
-          // style={{ backgroundImage: `url(${src})` }}
-        />
+      <button type="button" className="banner__button" onClick={handleShow}>
+        Details
       </button>
 
       <Modal show={show} onHide={handleClose}>
-        {/* <Modal.Header closeButton> */}
         <div
           className="modal__image"
           style={{ backgroundImage: `url(${src})` }}
         >
           <div className="modal-img--fadeBottom" />
         </div>
-        {/* </Modal.Header> */}
         <Modal.Body>
           <Modal.Title>{name}</Modal.Title>
           <a href={url} target="_blank" rel="noreferrer">
@@ -55,7 +45,7 @@ export default function ItemModal({
               Play
             </button>
           </a>
-          <button type="button" className="banner__button">
+          <button id={id} type="button" className="banner__button">
             My List
           </button>
           <p>
@@ -91,8 +81,7 @@ export default function ItemModal({
   );
 }
 
-ItemModal.propTypes = {
-  className: PropTypes.string.isRequired,
+MovieDetails.propTypes = {
   src: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
@@ -105,7 +94,7 @@ ItemModal.propTypes = {
   rating: PropTypes.number,
 };
 
-ItemModal.defaultProps = {
+MovieDetails.defaultProps = {
   runtime: 60,
   rating: 6,
 };

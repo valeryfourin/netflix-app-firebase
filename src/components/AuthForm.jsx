@@ -4,15 +4,17 @@
 /* eslint-disable unicorn/consistent-function-scoping */
 /* eslint-disable react-perf/jsx-no-new-function-as-prop */
 /* eslint-disable no-console */ /* eslint-disable prettier/prettier */
-import React, { useRef } from 'react';
+import PropTypes from 'prop-types';
+import React, { useRef, useState } from 'react';
 
 import { authUser } from '../firebase';
 
-import '../styles/SigninScreen.css';
+import '../styles/AuthForm.css';
 
-export default function SigninScreen() {
+export default function AuthForm({ redirectToRegComponent }) {
   const emailReference = useRef(null);
   const passwordReference = useRef(null);
+  const [isRegComponent, setIsRegComponent] = useState(redirectToRegComponent);
 
   const register = (event) => {
     event.preventDefault();
@@ -47,26 +49,52 @@ export default function SigninScreen() {
       });
   };
 
+  const auth = (event) => {
+    if (isRegComponent) {
+      register(event);
+    } else {
+      signIn(event);
+    }
+  }
+
   return (
     <div className="signin-screen">
       <form>
-        <h1>Sign In</h1>
+        <h1>{isRegComponent ? "Registration" : "Sign In"}</h1>
         <input ref={emailReference} placeholder="Email" type="email" />
         <input ref={passwordReference} placeholder="Password" type="password" />
-        <button type="submit" onClick={signIn}>
-          Sign In
+        <button type="submit" onClick={auth}>
+          {isRegComponent ? "Sign Up" : "Sign In"}
         </button>
 
         <h4>
-          <span className="signin-screen_gray">New to Netflix? </span>
-          <span
-            className="signin-screen__link"
-            onClick={register}
-          >
-            Sign Up now.
-          </span>
+          {isRegComponent ? (
+            <>
+              <span className="signin-screen_gray">Already have an account? </span>
+              <span
+                className="signin-screen__link"
+                onClick={() => setIsRegComponent(false)}
+              >
+                Sign In.
+              </span> 
+            </>
+            ) : (
+              <>
+                <span className="signin-screen_gray">New to Netflix? </span>
+                <span
+                  className="signin-screen__link"
+                  onClick={() => setIsRegComponent(true)}
+                >
+                  Sign Up now.
+                </span> 
+              </>
+            )}
         </h4>
       </form>
     </div>
   );
 }
+
+AuthForm.propTypes = {
+  redirectToRegComponent: PropTypes.bool.isRequired,
+};

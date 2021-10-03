@@ -1,22 +1,26 @@
 import React, { useState } from 'react';
 
-import SigninScreen from './SigninScreen';
+import AuthForm from '../components/AuthForm';
 
 import '../styles/LoginScreen.css';
 
 export default function LoginScreen() {
   const [signIn, setSignIn] = useState(false);
+  const [redirectToRegComponent, setRedirectToRegComponent] = useState(false);
   return (
     <div className="login-screen">
       <div className="login-screen__background">
         <img
           className="login-screen__logo"
-          src="https://assets.stickpng.com/images/580b57fcd9996e24bc43c529.png"
+          src="./image/Netflix_logo.png"
           alt="login screen background"
         />
         <button
-          onClick={() => setSignIn(true)}
-          className="login-screen__button"
+          onClick={() => {
+            setSignIn(true);
+            setRedirectToRegComponent(false);
+          }}
+          className="action-button login-screen__button"
           type="button"
         >
           Sign in
@@ -26,27 +30,26 @@ export default function LoginScreen() {
       </div>
       <div className="login-screen__body">
         {signIn ? (
-          <SigninScreen />
+          <AuthForm redirectToRegComponent={redirectToRegComponent} />
         ) : (
           <>
             <h1>Unlimited films, TV programmes and more</h1>
             <h2>Watch anywhere</h2>
             <h3>
-              Ready to watch? Enter your email to create or restart your
-              membership.
+              Ready to watch? Log in to create or restart your membership.
             </h3>
 
             <div className="login-screen__input">
-              <form>
-                <input type="email" placeholder="Email Address" />
-                <button
-                  onClick={() => setSignIn(true)}
-                  type="button"
-                  className="login-screen__getStarted"
-                >
-                  GET STARTED
-                </button>
-              </form>
+              <button
+                onClick={() => {
+                  setSignIn(true);
+                  setRedirectToRegComponent(true);
+                }}
+                type="button"
+                className="action-button login-screen__getStarted"
+              >
+                GET STARTED
+              </button>
             </div>
           </>
         )}

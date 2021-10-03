@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Image, Nav, Navbar } from 'react-bootstrap';
 import { useHistory } from 'react-router';
+import { NavLink } from 'react-router-dom';
 
 import {
   HOME_ROUTE,
@@ -32,7 +33,6 @@ export default function NavBar() {
   return (
     <Navbar
       expand="lg"
-      fixed="top"
       id="navbar"
       // className="nav-menu nav-menu-show"
       className={`nav-menu ${show && 'nav-menu-show'}`}
@@ -44,12 +44,10 @@ export default function NavBar() {
           src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/1280px-Netflix_2015_logo.svg.png"
           alt="Netflix"
         />
-        {/* <Navbar.Toggle aria-controls="basic-navbar-nav" /> */}
-        {/* <Navbar.Collapse id="basic-navbar-nav"> */}
         <Nav className="me-auto">
-          <Nav.Link href={HOME_ROUTE}>Home</Nav.Link>
-          <Nav.Link href={SEARCH_ROUTE}>Search</Nav.Link>
-          <Nav.Link href={MYLIST_ROUTE}>My List</Nav.Link>
+          <NavLink to={HOME_ROUTE}>Home</NavLink>
+          <NavLink to={SEARCH_ROUTE}>Search</NavLink>
+          <NavLink to={MYLIST_ROUTE}>My List</NavLink>
         </Nav>
         {/* </Navbar.Collapse> */}
         <Image

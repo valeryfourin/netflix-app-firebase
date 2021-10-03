@@ -24,3 +24,20 @@ code {
   background-color: rgb(51, 51, 51);
   border-radius: 5px;
 }
+
+.action-button {
+  background-color: #e50914;
+  border: none;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 10px 20px;
+}
+
+.action-button:disabled {
+  background-color: gray;
+}
+
+.action-button:active {
+  background-color: #610005;
+}

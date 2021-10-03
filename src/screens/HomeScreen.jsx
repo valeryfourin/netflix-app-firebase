@@ -7,7 +7,7 @@ import ShowsList from '../components/ShowsList';
 
 import '../styles/HomeScreen.css';
 
-export default function Homescreen() {
+export default function HomeScreen() {
   return (
     <div className="home-screen">
       <NavBar />

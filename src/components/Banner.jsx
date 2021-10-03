@@ -1,13 +1,13 @@
-// eslint-disable-next-line eslint-comments/disable-enable-pair
-/* eslint-disable no-console */
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 
 import requests from '../http/Requests';
 
+import MovieDetails from './MovieDetails';
+
 import '../styles/Banner.css';
 
-const maxSymbolCount = 200;
+const maxSymbolCount = 300;
 
 function truncate(string, number_) {
   return string?.length > number_
@@ -15,15 +15,8 @@ function truncate(string, number_) {
     : string;
 }
 
-// function htmlDecode(input) {
-//   const element = document.createElement('div');
-//   element.innerHTML = input;
-//   return element.childNodes.length === 0 ? '' : element.childNodes[0].nodeValue;
-// }
-
 export default function Banner() {
   const [movie, setMovie] = useState([]);
-  // eslint-disable-next-line no-unused-vars
   const [movieBanner, setMovieBanner] = useState([]);
   useEffect(() => {
     async function fetchData() {
@@ -56,11 +49,8 @@ export default function Banner() {
     fetchData();
   }, [movie]);
 
+  // eslint-disable-next-line no-console
   console.log(movie);
-  // console.log(
-  //   movieBanner.length > 0 ? movieBanner[0].resolutions.original.url : 0,
-  // );
-  // console.log(typeof movie === 'undefined' ? 1 : movie?.id);
 
   return (
     <header
@@ -72,7 +62,7 @@ export default function Banner() {
       }}
     >
       <div className="banner__content row">
-        <div className="col-6 banner__col">
+        <div className="col-8 banner__col">
           <div className="banner__text-wrap">
             <h1 className="banner__title">{movie && movie.name}</h1>
             <div className="banner__buttons">
@@ -81,25 +71,28 @@ export default function Banner() {
                   Play
                 </button>
               </a>
-              <button type="button" className="banner__button">
-                My List
-              </button>
+              {movie && (
+                <MovieDetails
+                  src={movie.image?.original}
+                  id={movie.id}
+                  name={movie?.name}
+                  url={movie?.url}
+                  premiered={movie?.premiered}
+                  runtime={movie?.runtime}
+                  summary={movie?.summary}
+                  type={movie?.type}
+                  genres={movie?.genres?.join(', ')}
+                  rating={movie?.rating?.average}
+                />
+              )}
             </div>
             <h2
               className="banner__description"
-              // dangerouslySetInnerHTML={{
-              //   __html: ,
-              // }}
-            >
-              {/* {htmlDecode(movie && movie.summary)} */}
-              {/* {new DOMParser().parseFromString(movie && movie.summary, 'text/html')} */}
-              {/* {truncate(movie && movie.summary, maxSymbolCount)} */}
-              {truncate(movie && movie.summary, maxSymbolCount)}
-            </h2>
+              dangerouslySetInnerHTML={{
+                __html: truncate(movie && movie.summary, maxSymbolCount),
+              }}
+            />
           </div>
-        </div>
-        <div className="col-6">
-          <div className="banner__preview" />
         </div>
       </div>
 

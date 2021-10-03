@@ -10,4 +10,13 @@ const requests = {
   fetchDetectiveShows: 'http://api.tvmaze.com/search/shows?q=detective',
 };
 
+// const showsCount = 50;
+// function filterShows(array, property, keywords) {
+//   return array
+//     .filter((object) => {
+//       return object?.property.includes(keywords);
+//     })
+//     .slice(0, showsCount);
+// }
+
 export default requests;
