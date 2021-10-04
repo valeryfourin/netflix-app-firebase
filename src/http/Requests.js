@@ -1,22 +1,30 @@
+/* eslint-disable eslint-comments/disable-enable-pair */
+/* eslint-disable no-console */
 const requests = {
   fetchShows: 'https://api.tvmaze.com/shows',
   fetchOneShow: 'https://api.tvmaze.com/lookup/shows',
   fetchPeople: 'https://api.tvmaze.com/search/people',
-  fetchHorrorShows: 'https://api.tvmaze.com/search/shows?q=horror',
-  fetchRomanceShows: 'https://api.tvmaze.com/search/shows?q=romance',
-  fetchComedyShows: 'http://api.tvmaze.com/search/shows?q=comedy',
-  fetchActionShows: 'https://api.tvmaze.com/search/shows?q=action',
-  fetchDocumentaryShows: 'https://api.tvmaze.com/search/shows?q=documentary',
-  fetchDetectiveShows: 'http://api.tvmaze.com/search/shows?q=detective',
 };
 
-// const showsCount = 50;
-// function filterShows(array, property, keywords) {
-//   return array
-//     .filter((object) => {
-//       return object?.property.includes(keywords);
-//     })
-//     .slice(0, showsCount);
-// }
+export const genresTypes = [
+  'All',
+  'Comedy',
+  'Romance',
+  'Drama',
+  'Horror',
+  'Thriller',
+];
+
+function lowerCase(variable) {
+  return Array.isArray(variable)
+    ? variable.map((item) => item.toLowerCase())
+    : variable.toLowerCase();
+}
+
+export function filterShows(array = [], property, keywords) {
+  return array.filter((object) => {
+    return lowerCase(object[property])?.includes(lowerCase(keywords));
+  });
+}
 
 export default requests;

@@ -1,4 +1,5 @@
 import axios from 'axios';
+import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 
 import requests from '../http/Requests';
@@ -15,19 +16,16 @@ function truncate(string, number_) {
     : string;
 }
 
-export default function Banner() {
+export default function Banner({ array }) {
   const [movie, setMovie] = useState([]);
   const [movieBanner, setMovieBanner] = useState([]);
   useEffect(() => {
-    async function fetchData() {
-      const request = await axios.get(requests.fetchShows);
-      setMovie(
-        request.data[Math.floor(Math.random() * request.data.length - 1)],
-      );
-      return request;
-    }
-    fetchData();
-  }, []);
+    setMovie(
+      JSON.parse(array)[
+        Math.floor(Math.random() * JSON.parse(array).length - 1)
+      ],
+    );
+  }, [array]);
 
   useEffect(() => {
     async function fetchData() {
@@ -49,9 +47,6 @@ export default function Banner() {
     fetchData();
   }, [movie]);
 
-  // eslint-disable-next-line no-console
-  console.log(movie);
-
   return (
     <header
       className="banner"
@@ -66,7 +61,7 @@ export default function Banner() {
           <div className="banner__text-wrap">
             <h1 className="banner__title">{movie && movie.name}</h1>
             <div className="banner__buttons">
-              <a href={movie.url} target="_blank" rel="noreferrer">
+              <a href={movie?.url} target="_blank" rel="noreferrer">
                 <button type="button" className="banner__button">
                   Play
                 </button>
@@ -100,3 +95,7 @@ export default function Banner() {
     </header>
   );
 }
+
+Banner.propTypes = {
+  array: PropTypes.string.isRequired,
+};

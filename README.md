@@ -1,3 +1,5 @@
+Go to https://netflix-6f111.web.app/ to see it in the browser
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

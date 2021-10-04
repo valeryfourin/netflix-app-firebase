@@ -1,8 +1,7 @@
-import axios from 'axios';
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 
-import requests from '../http/Requests';
+import { filterShows } from '../http/Requests';
 
 import ItemModal from './ItemModal';
 
@@ -10,27 +9,21 @@ import '../styles/ShowsList.css';
 
 const showsCount = 30;
 
-export default function ShowsList({ title, genre }) {
+export default function ShowsList({ title, genre, array }) {
   const [movies, setMovies] = useState([]);
   useEffect(() => {
     async function fetchData() {
-      const request = await axios.get(requests.fetchShows);
       if (genre !== 'all') {
         setMovies(
-          request.data
-            .filter((object) => {
-              return object?.genres.includes(genre);
-            })
-            .slice(0, showsCount),
+          filterShows(JSON.parse(array), 'genres', genre).slice(0, showsCount),
         );
       } else {
-        setMovies(request.data.slice(0, showsCount));
+        setMovies(JSON.parse(array).slice(0, showsCount));
       }
-      return request;
     }
 
     fetchData();
-  }, [genre]);
+  }, [title, genre, array]);
 
   return (
     <div className="shows-list">
@@ -62,4 +55,5 @@ export default function ShowsList({ title, genre }) {
 ShowsList.propTypes = {
   title: PropTypes.string.isRequired,
   genre: PropTypes.string.isRequired,
+  array: PropTypes.string.isRequired,
 };

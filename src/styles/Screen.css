@@ -1,6 +1,6 @@
 .screen {
   color: white;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .screen__body {
@@ -63,6 +63,14 @@
   padding-bottom: 10px;
 }
 
+.screen__results {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 50px 0;
+}
+
 .screen__button {
   background-color: #e50914;
   border: none;
@@ -71,6 +79,10 @@
   font-weight: 600;
   padding: 10px 20px;
   width: 100%;
+}
+
+.screen .modal__button {
+  margin: 10px;
 }
 
 .screen__button:disabled {
@@ -93,6 +105,15 @@
   outline-width: 0;
   padding: 10px;
   width: 30%;
+}
+
+.page-link {
+  color: black !important;
+}
+
+.pagination {
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 @media screen and (max-width: 600px) {

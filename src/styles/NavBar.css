@@ -35,27 +35,27 @@
   z-index: 1030;
 }
 
+.navbar-nav a {
+  margin-right: 10px;
+  text-decoration: none;
+}
+
 .nav-menu-show {
   background: none;
   transition: all 0.5s ease-in-out;
-}
-
-a {
-  color: beige !important;
-  transition: all 5s ease-in-out;
-}
-
-a:hover {
-  color: lightgrey !important;
 }
 
 .nav-menu-show a {
   color: white !important;
 }
 
-.navbar-nav a {
-  margin-right: 10px;
-  text-decoration: none;
+.nav-menu a {
+  color: beige !important;
+  transition: all 5s ease-in-out;
+}
+
+.nav-menu a:hover {
+  color: lightgrey !important;
 }
 
 @media screen and (max-width: 1000px) {
