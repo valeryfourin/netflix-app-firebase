@@ -45,13 +45,13 @@ export default function SearchScreen() {
       console.log(filterShows(movies, 'genres', genre));
       setFilteredMovies(filterShows(movies, 'genres', genre));
     } else {
-      setFilteredMovies(movies.slice(0, showsCount));
+      setFilteredMovies(movies);
     }
   }
 
   function fetchDataByKeyword() {
     if (keyword !== '') {
-      setFilteredMovies(filterShows(movies, 'name', keyword));
+      setFilteredMovies(filterShows(filteredMovies, 'name', keyword));
     }
   }
 

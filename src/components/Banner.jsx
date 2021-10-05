@@ -57,7 +57,7 @@ export default function Banner({ array }) {
       }}
     >
       <div className="banner__content row">
-        <div className="col-8 banner__col">
+        <div className="col-sm-10 col-md-8 banner__col">
           <div className="banner__text-wrap">
             <h1 className="banner__title">{movie && movie.name}</h1>
             <div className="banner__buttons">

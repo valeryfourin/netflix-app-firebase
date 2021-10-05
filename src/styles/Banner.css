@@ -80,3 +80,9 @@
     width: unset;
   }
 }
+
+@media screen and (max-width: 550px) {
+  .banner__title {
+    font-size: 1.8rem;
+  }
+}
